@@ -1,7 +1,6 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from typing import Optional, List
 from app.schemas.auth import UserOut
-from app.schemas.pnr import PNROut if False else BaseModel
 
 
 class ProfileLanguageUpdate(BaseModel):
@@ -13,3 +12,4 @@ class ProfileDetails(BaseModel):
     total_trips: int
     active_trips: int
     total_complaints: int
+    model_config = ConfigDict(from_attributes=True)

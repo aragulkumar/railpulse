@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from typing import Optional
 from datetime import datetime
 
@@ -10,7 +10,7 @@ class SOSRequest(BaseModel):
     gps_lat: Optional[float] = None
     gps_lng: Optional[float] = None
     nearest_station: Optional[str] = None
-    emergency_type: str = "Security / Threat"  # Medical, Security, Harassment, Fire
+    emergency_type: str = "Security / Threat"
     description: str
 
 
@@ -18,13 +18,13 @@ class CleaningRequest(BaseModel):
     pnr_id: str
     coach: str
     berth: int
-    cleaning_type: str = "Coach Floor & Toilet"  # Toilet, Floor, Berth, Linen, Trash
+    cleaning_type: str = "Coach Floor & Toilet"
     description: Optional[str] = "Immediate cleaning required"
 
 
 class GeneralComplaintRequest(BaseModel):
     pnr_id: Optional[str] = None
-    category: str = "Punctuality / Overcrowding"  # Electrical, Catering, Staff Behavior, Water
+    category: str = "Punctuality / Overcrowding"
     coach: Optional[str] = None
     berth: Optional[int] = None
     description: str
@@ -32,12 +32,12 @@ class GeneralComplaintRequest(BaseModel):
 
 class SeatSwapCreateRequest(BaseModel):
     requester_pnr_id: str
-    preferred_berth_type: str = "Lower"  # Lower, Middle, Side Lower
+    preferred_berth_type: str = "Lower"
     reason: str = "Senior Citizen / Medical condition"
 
 
 class SeatSwapRespondRequest(BaseModel):
-    action: str  # accept, decline
+    action: str
 
 
 class ComplaintOut(BaseModel):
@@ -58,9 +58,7 @@ class ComplaintOut(BaseModel):
     resolution_notes: Optional[str]
     created_at: datetime
     resolved_at: Optional[datetime]
-
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class SeatSwapOut(BaseModel):
@@ -77,6 +75,4 @@ class SeatSwapOut(BaseModel):
     reason: str
     status: str
     created_at: datetime
-
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)

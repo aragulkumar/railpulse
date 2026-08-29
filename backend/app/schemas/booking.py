@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from typing import List, Optional, Dict
 from datetime import datetime
 
@@ -16,7 +16,7 @@ class TrainSearchResult(BaseModel):
     duration: str
     classes_available: List[str]
     fares: Dict[str, float]
-    availability: Dict[str, str]  # e.g., {"3A": "AVAILABLE-42", "SL": "RAC-12"}
+    availability: Dict[str, str]
     runs_on: List[str]
 
 
@@ -24,17 +24,17 @@ class BookingRequest(BaseModel):
     train_no: str
     from_station: str
     to_station: str
-    travel_class: str  # 1A, 2A, 3A, SL, CC
+    travel_class: str
     quota: str = "GN"
-    journey_date: str  # YYYY-MM-DD
+    journey_date: str
     passenger_name: str
     passenger_age: int
     passenger_gender: str = "M"
-    berth_preference: Optional[str] = "Lower"  # Lower, Middle, Upper, Side Lower, Side Upper
+    berth_preference: Optional[str] = "Lower"
 
 
 class PNROut(BaseModel):
-    id: str  # 10-digit PNR
+    id: str
     user_id: int
     train_no: str
     train_name: str
@@ -54,6 +54,4 @@ class PNROut(BaseModel):
     passenger_age: int
     passenger_gender: str
     created_at: datetime
-
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
