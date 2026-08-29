@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.db.session import engine, Base
 import app.models  # Ensure all models are registered
-from app.routers import eta, auth, booking, complaints
+from app.routers import eta, auth, booking, complaints, chatbot
 
 # Create database tables automatically
 Base.metadata.create_all(bind=engine)
@@ -31,6 +31,7 @@ app.include_router(eta.router, prefix="/eta")
 app.include_router(eta.router, prefix="")  # For direct /ws/eta WebSocket mounting
 app.include_router(booking.router)
 app.include_router(complaints.router)
+app.include_router(chatbot.router)
 
 
 @app.get("/")
