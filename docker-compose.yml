@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: timescale/timescaledb:latest-pg16
+    container_name: railpulse-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: railpulse
+      POSTGRES_PASSWORD: railpulse_secret
+      POSTGRES_DB: railpulse_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: railpulse-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: railpulse-backend
+    restart: always
+    environment:
+      - DATABASE_URL=postgresql://railpulse:railpulse_secret@postgres:5432/railpulse_db
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=railpulse_secret_super_key_hackathon_2026
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+
+  celery_worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: railpulse-celery
+    command: celery -A app.tasks.celery_app worker --loglevel=info
+    environment:
+      - DATABASE_URL=postgresql://railpulse:railpulse_secret@postgres:5432/railpulse_db
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://redis:6379/1
+    depends_on:
+      - postgres
+      - redis
+
+volumes:
+  pgdata:
+  redisdata:
