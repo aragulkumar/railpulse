@@ -3,8 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.db.session import engine, Base
 import app.models  # Ensure all models are registered
+from app.routers import eta, auth
 
-# Create database tables automatically on startup if SQLite or PG without migration
+# Create database tables automatically
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
@@ -15,7 +16,7 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
-# Enable CORS for React Native / Web clients
+# Enable CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -23,6 +24,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Mount Routers
+app.include_router(auth.router, prefix="/auth")
+app.include_router(eta.router, prefix="/eta")
+app.include_router(eta.router, prefix="")  # For direct /ws/eta WebSocket mounting
 
 
 @app.get("/")
