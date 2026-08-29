@@ -3,10 +3,16 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.db.session import engine, Base
 import app.models  # Ensure all models are registered
-from app.routers import eta, auth, booking, complaints, chatbot
+from app.routers import eta, auth, booking, complaints, chatbot, notifications, profile
+from app.db.seed import seed_database
 
 # Create database tables automatically
 Base.metadata.create_all(bind=engine)
+# Seed initial data on startup if clean
+try:
+    seed_database()
+except Exception as e:
+    print(f"Seed note: {e}")
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -32,6 +38,8 @@ app.include_router(eta.router, prefix="")  # For direct /ws/eta WebSocket mounti
 app.include_router(booking.router)
 app.include_router(complaints.router)
 app.include_router(chatbot.router)
+app.include_router(notifications.router)
+app.include_router(profile.router)
 
 
 @app.get("/")
