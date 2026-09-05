@@ -24,9 +24,10 @@ export const App: React.FC = () => {
   const [etaViewMode, setEtaViewMode] = useState<'train' | 'station'>('train');
   const [selectedTrainNo, setSelectedTrainNo] = useState<string>('12951');
 
-  const handleSelectTrainFromStation = (trainNo: string) => {
+  const handleNavigateToTrainETA = (trainNo: string) => {
     setSelectedTrainNo(trainNo);
     setEtaViewMode('train');
+    setActiveTab('eta');
   };
 
   return (
@@ -202,15 +203,15 @@ export const App: React.FC = () => {
           etaViewMode === 'train' ? (
             <TrainETAScreen initialTrainNo={selectedTrainNo} />
           ) : (
-            <StationETAScreen onSelectTrain={handleSelectTrainFromStation} />
+            <StationETAScreen onSelectTrain={handleNavigateToTrainETA} />
           )
         )}
 
-        {activeTab === 'booking' && <SearchScreen />}
+        {activeTab === 'booking' && <SearchScreen onNavigateToETA={handleNavigateToTrainETA} />}
         {activeTab === 'complaints' && <ComplaintsHomeScreen />}
         {activeTab === 'chat' && <ChatScreen />}
         {activeTab === 'notifications' && <NotificationsScreen onNavigate={(s) => setActiveTab(s as any)} />}
-        {activeTab === 'profile' && <ProfileScreen />}
+        {activeTab === 'profile' && <ProfileScreen onNavigateToETA={handleNavigateToTrainETA} />}
       </main>
 
       {/* Modern Bottom Navigation Bar */}
