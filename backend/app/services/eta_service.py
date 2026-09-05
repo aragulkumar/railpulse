@@ -125,7 +125,94 @@ SAMPLE_TRAINS = [
             {"station_code": "BPL", "station_name": "Bhopal Jn", "scheduled_arrival": "05:30", "scheduled_section_duration_min": 340, "platform": "1", "distance_km": 701},
             {"station_code": "NGP", "station_name": "Nagpur Jn", "scheduled_arrival": "11:55", "scheduled_section_duration_min": 375, "platform": "2", "distance_km": 1091},
             {"station_code": "BPQ", "station_name": "Balharshah Jn", "scheduled_arrival": "15:20", "scheduled_section_duration_min": 200, "platform": "1", "distance_km": 1300},
-            {"station_code": "TVC", "station_name": "Thiruvananthapuram", "scheduled_arrival": "18:00", "scheduled_section_duration_min": 1500, "platform": "1", "distance_km": 3036}
+    {
+        "train_no": "20607",
+        "train_name": "Vande Bharat Express (MAS → SBC)",
+        "train_type": "Vande Bharat",
+        "source_station_code": "MAS",
+        "source_station_name": "MGR Chennai Central",
+        "dest_station_code": "SBC",
+        "dest_station_name": "KSR Bengaluru",
+        "departure_time": "05:50",
+        "arrival_time": "10:15",
+        "travel_time_hours": 4.4,
+        "total_distance_km": 359.0,
+        "current_speed": 130.0,
+        "current_location_desc": "Cruising between Katpadi Jn and Jolarpettai Jn",
+        "current_lat": 12.9249,
+        "current_lng": 79.1352,
+        "classes_available": ["EC", "CC"],
+        "base_fares": {"EC": 1950.0, "CC": 995.0},
+        "runs_on_days": ["Mon", "Tue", "Wed", "Fri", "Sat", "Sun"],
+        "base_delay_min": 0,
+        "stops": [
+            {"station_code": "MAS", "station_name": "MGR Chennai Central", "scheduled_arrival": "05:50", "scheduled_section_duration_min": 0, "platform": "2", "distance_km": 0},
+            {"station_code": "KPD", "station_name": "Katpadi Jn", "scheduled_arrival": "07:13", "scheduled_section_duration_min": 83, "platform": "1", "distance_km": 130},
+            {"station_code": "BWT", "station_name": "Bangarapet Jn", "scheduled_arrival": "09:08", "scheduled_section_duration_min": 115, "platform": "3", "distance_km": 289},
+            {"station_code": "KJM", "station_name": "Krishnarajapuram", "scheduled_arrival": "09:53", "scheduled_section_duration_min": 45, "platform": "4", "distance_km": 345},
+            {"station_code": "SBC", "station_name": "KSR Bengaluru", "scheduled_arrival": "10:15", "scheduled_section_duration_min": 22, "platform": "7", "distance_km": 359}
+        ]
+    },
+    {
+        "train_no": "12673",
+        "train_name": "Cheran Superfast Express (MAS → CBE)",
+        "train_type": "Superfast Express",
+        "source_station_code": "MAS",
+        "source_station_name": "MGR Chennai Central",
+        "dest_station_code": "CBE",
+        "dest_station_name": "Coimbatore Jn",
+        "departure_time": "22:00",
+        "arrival_time": "06:00",
+        "travel_time_hours": 8.0,
+        "total_distance_km": 497.0,
+        "current_speed": 105.0,
+        "current_location_desc": "Approaching Salem Junction outer",
+        "current_lat": 11.6643,
+        "current_lng": 78.1460,
+        "classes_available": ["1A", "2A", "3A", "SL"],
+        "base_fares": {"1A": 2240.0, "2A": 1340.0, "3A": 960.0, "SL": 355.0},
+        "runs_on_days": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "base_delay_min": 5,
+        "stops": [
+            {"station_code": "MAS", "station_name": "MGR Chennai Central", "scheduled_arrival": "22:00", "scheduled_section_duration_min": 0, "platform": "10", "distance_km": 0},
+            {"station_code": "AJJ", "station_name": "Arakkonam Jn", "scheduled_arrival": "22:58", "scheduled_section_duration_min": 58, "platform": "1", "distance_km": 69},
+            {"station_code": "KPD", "station_name": "Katpadi Jn", "scheduled_arrival": "23:48", "scheduled_section_duration_min": 50, "platform": "1", "distance_km": 130},
+            {"station_code": "JTJ", "station_name": "Jolarpettai Jn", "scheduled_arrival": "01:08", "scheduled_section_duration_min": 80, "platform": "2", "distance_km": 214},
+            {"station_code": "SA", "station_name": "Salem Jn", "scheduled_arrival": "02:47", "scheduled_section_duration_min": 99, "platform": "1", "distance_km": 334},
+            {"station_code": "ED", "station_name": "Erode Jn", "scheduled_arrival": "03:50", "scheduled_section_duration_min": 63, "platform": "2", "distance_km": 394},
+            {"station_code": "TUP", "station_name": "Tiruppur", "scheduled_arrival": "04:38", "scheduled_section_duration_min": 48, "platform": "1", "distance_km": 444},
+            {"station_code": "CBE", "station_name": "Coimbatore Jn", "scheduled_arrival": "06:00", "scheduled_section_duration_min": 82, "platform": "3", "distance_km": 497}
+        ]
+    },
+    {
+        "train_no": "12638",
+        "train_name": "Pandian Superfast Express (MDU → MS)",
+        "train_type": "Superfast Express",
+        "source_station_code": "MDU",
+        "source_station_name": "Madurai Jn",
+        "dest_station_code": "MS",
+        "dest_station_name": "Chennai Egmore",
+        "departure_time": "21:35",
+        "arrival_time": "05:10",
+        "travel_time_hours": 7.6,
+        "total_distance_km": 497.0,
+        "current_speed": 98.0,
+        "current_location_desc": "Crossing Tiruchchirappalli Junction",
+        "current_lat": 10.7905,
+        "current_lng": 78.7047,
+        "classes_available": ["1A", "2A", "3A", "SL"],
+        "base_fares": {"1A": 2240.0, "2A": 1340.0, "3A": 960.0, "SL": 355.0},
+        "runs_on_days": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "base_delay_min": 3,
+        "stops": [
+            {"station_code": "MDU", "station_name": "Madurai Jn", "scheduled_arrival": "21:35", "scheduled_section_duration_min": 0, "platform": "1", "distance_km": 0},
+            {"station_code": "DG", "station_name": "Dindigul Jn", "scheduled_arrival": "22:33", "scheduled_section_duration_min": 58, "platform": "3", "distance_km": 62},
+            {"station_code": "TPJ", "station_name": "Tiruchchirappalli Jn", "scheduled_arrival": "23:50", "scheduled_section_duration_min": 77, "platform": "1", "distance_km": 157},
+            {"station_code": "VRI", "station_name": "Vriddhachalam Jn", "scheduled_arrival": "01:25", "scheduled_section_duration_min": 95, "platform": "3", "distance_km": 280},
+            {"station_code": "VM", "station_name": "Villupuram Jn", "scheduled_arrival": "02:25", "scheduled_section_duration_min": 60, "platform": "1", "distance_km": 335},
+            {"station_code": "CGL", "station_name": "Chengalpattu Jn", "scheduled_arrival": "03:53", "scheduled_section_duration_min": 88, "platform": "5", "distance_km": 438},
+            {"station_code": "TBM", "station_name": "Tambaram", "scheduled_arrival": "04:23", "scheduled_section_duration_min": 30, "platform": "6", "distance_km": 469},
+            {"station_code": "MS", "station_name": "Chennai Egmore", "scheduled_arrival": "05:10", "scheduled_section_duration_min": 47, "platform": "4", "distance_km": 497}
         ]
     }
 ]
@@ -230,6 +317,11 @@ class ETAService:
         station_names = {
             "NDLS": "New Delhi",
             "MMCT": "Mumbai Central",
+            "MAS": "MGR Chennai Central",
+            "SBC": "KSR Bengaluru",
+            "CBE": "Coimbatore Junction",
+            "MDU": "Madurai Junction",
+            "MS": "Chennai Egmore",
             "BSB": "Varanasi Junction",
             "BPL": "Bhopal Junction",
             "RKMP": "Rani Kamlapati",
@@ -237,7 +329,9 @@ class ETAService:
             "CNB": "Kanpur Central",
             "KOTA": "Kota Junction",
             "ST": "Surat",
-            "TVC": "Thiruvananthapuram Central"
+            "TVC": "Thiruvananthapuram Central",
+            "HWH": "Howrah Junction",
+            "HYB": "Hyderabad Deccan"
         }
 
         station_name = station_names.get(station_code_upper, f"{station_code_upper} Station")
